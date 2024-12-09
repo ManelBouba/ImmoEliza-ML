@@ -1,3 +1,4 @@
+import time  # Import the time module
 import pandas as pd
 import numpy as np
 from Feature_Engineering import FeatureEngineering
@@ -7,6 +8,8 @@ from plot import Plotting
 import shap
 
 def main():
+    start_time = time.time()  # Record the start time
+
     # Step 1: Load the dataset
     df = pd.read_csv("Data/immoweb_with_all_columns.csv")
 
@@ -34,8 +37,20 @@ def main():
     model_trainer.train_model()
 
     # Step 5: Model Evaluation
-    train_rmse, test_rmse = model_trainer.evaluate_model()
-    model_trainer.model_performance_metrics()
+    # Capture the returned dictionary with all metrics
+    metrics = model_trainer.evaluate_model()
+
+    # Use the returned metrics from the dictionary
+    print(f"Training RMSE: {metrics['train_rmse']}")
+    print(f"Test RMSE: {metrics['test_rmse']}")
+    print(f"Training MAE: {metrics['train_mae']}")
+    print(f"Test MAE: {metrics['test_mae']}")
+    print(f"Training R²: {metrics['train_r2']}")
+    print(f"Test R²: {metrics['test_r2']}")
+    print(f"Training MAPE: {metrics['train_mape']}%")
+    print(f"Test MAPE: {metrics['test_mape']}%")
+    print(f"Training sMAPE: {metrics['train_smape']}%")
+    print(f"Test sMAPE: {metrics['test_smape']}%")
 
     # Step 6: Plotting
     plotter = Plotting(model_trainer.model, model_trainer.X_test, model_trainer.y_test)
@@ -55,6 +70,10 @@ def main():
 
     print(f"Model saved to {model_path}")
     print(f"Predictions saved to {predictions_path}")
+
+    end_time = time.time()  # Record the end time
+    total_time = end_time - start_time  # Calculate total time taken
+    print(f"Total execution time: {total_time:.2f} seconds")
 
 # Run the main function when the script is executed
 if __name__ == "__main__":
