@@ -65,8 +65,20 @@ def main():
     # Step 8: Save Model and Predictions
     model_path = 'catboost_model_with_tuning.cbm'
     predictions_path = 'predictions.csv'
+
+    # Apply the inverse transformation to the predictions (expm1)
+    log_predictions = model_trainer.model.predict(model_trainer.X_test)
+    normal_predictions = np.expm1(log_predictions)  # Reverse log transformation
+
+    # Save model
     model_trainer.model.save_model(model_path)
-    np.savetxt(predictions_path, np.expm1(model_trainer.model.predict(model_trainer.X_test)), delimiter=",", header="Predicted Prices", comments="")
+
+    # Save predictions with actual values for comparison
+    predictions_df = pd.DataFrame({
+        "Actual Prices": np.expm1(model_trainer.y_test),  # Reverse log-transformed actual prices
+        "Predicted Prices": normal_predictions
+    })
+    predictions_df.to_csv(predictions_path, index=False)
 
     print(f"Model saved to {model_path}")
     print(f"Predictions saved to {predictions_path}")

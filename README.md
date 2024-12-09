@@ -28,8 +28,9 @@ IMMOELIZA-ML/
 ├── Model_Training.py                     # Main script for model training
 ├── main.py                               # Entry point script (optional)
 ├── plot.py                               # Script for generating plots
-└── predictions.csv                       # Final model predictions
+└── predictions.csv                       # Final model predictions(Actual Prices,Predicted Prices)
 └── requirements.txt                      # Python dependencies
+└── TEST.py                               #script serves as a utility to test the trained model using a randomly generated dataset.
 ```
 
 ## Installation
@@ -48,6 +49,7 @@ To run this project locally, follow the steps below:
     ```
 
 3. Ensure that you have all necessary files, including the dataset (`data.csv`) and the trained model (`catboost_model_with_tuning.cbm`).
+4. Exponentiate the predictions to get the original price scale predicted_prices = np.exp(predictions)
 
 ## Dataset
 
