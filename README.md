@@ -8,6 +8,7 @@ The goal of this project is to predict the price of properties using various fea
 
 
 ## Project Structure
+```plaintext
 IMMOELIZA-ML/
 ├── Data/
 │   ├── immoweb_data_cleaned.csv          # Cleaned dataset
@@ -26,11 +27,10 @@ IMMOELIZA-ML/
 ├── Housing_Price_Prediction_Report.ipynb # Jupyter Notebook with project details
 ├── Model_Training.py                     # Main script for model training
 ├── main.py                               # Entry point script (optional)
-├── modelvalidation.ipynb                 # Notebook for model validation
 ├── plot.py                               # Script for generating plots
 └── predictions.csv                       # Final model predictions
 └── requirements.txt                      # Python dependencies
-
+```
 
 ## Installation
 
