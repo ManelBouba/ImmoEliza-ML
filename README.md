@@ -6,15 +6,14 @@ This project implements a machine learning model to predict real estate prices b
 
 The goal of this project is to predict the price of properties using various features that represent property attributes, location, and related economic factors. The model is evaluated using multiple regression metrics and feature importance analysis.
 
-## Project Structure
 
-```plaintext
+## Project Structure
 IMMOELIZA-ML/
 ├── Data/
 │   ├── immoweb_data_cleaned.csv          # Cleaned dataset
 │   ├── immoweb_features2.csv             # Feature-engineered dataset
 │   ├── immoweb_with_all_columns.csv      # Dataset with all original columns
-├── Features/                             #directory contains all scripts and data related to feature engineering, including scripts for feature creation and external data files
+├── Features/                             # Directory containing all scripts and data related to feature engineering, including scripts for feature creation and external data files
 ├── Figures/                              # Folder for additional plots and visualizations
 │   ├── Feature Importances.png           # Visualization of feature importance
 │   ├── Residual Distribution.png         # Residual distribution plot
@@ -30,7 +29,8 @@ IMMOELIZA-ML/
 ├── modelvalidation.ipynb                 # Notebook for model validation
 ├── plot.py                               # Script for generating plots
 └── predictions.csv                       # Final model predictions
-└──requirements.txt                       # Python dependencies
+└── requirements.txt                      # Python dependencies
+
 
 ## Installation
 
@@ -133,10 +133,42 @@ SHAP (SHapley Additive exPlanations) values were used to interpret the model's p
 
 This project demonstrates the power of machine learning in predicting property prices using various features. The CatBoost model performs well with a solid R² value of around 0.75. By improving feature engineering and handling outliers, future iterations of the model can achieve even better results.
 
-## License
+# References
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project utilizes several sources for data and tools, which are crucial for building and training the CatBoost model for real estate price prediction in Belgium.
 
-## Acknowledgments
+## 1. **Data Sources**  
+The following datasets and external data sources were used in this project:
 
-- Thanks to the contributors and datasets available for this project.
+- **Immoweb Data**: The primary dataset was extracted from [Immoweb](https://www.immoweb.be/en), one of Belgium's leading real estate websites. This dataset includes property prices and various property features.
+- **External Economic and Demographic Data**: Additional features were created using external datasets, including economic indicators like unemployment rates, population density, and geographic information. These datasets were sourced from:
+  - [Statistics Belgium](https://statbel.fgov.be/en) for economic and population statistics.
+  - [Open Data Portal - Brussels](https://data.brussels.be/en) for geographic and regional data.
+  - [European Union Open Data Portal](https://data.europa.eu/euodp/en/home) for broader European economic indicators, including unemployment rates and housing data.
+  
+## 2. **Feature Engineering**  
+External data such as population density, unemployment rates, and geographical data were incorporated into the model to enhance its prediction accuracy. The following resources and techniques were employed in the feature engineering process:
+  - [Scikit-learn](https://scikit-learn.org/stable/) for creating machine learning pipelines, transformations, and model evaluation.
+  - [SHAP (SHapley Additive exPlanations)](https://github.com/slundberg/shap) for model explainability and feature importance visualization.
+  - [Pandas](https://pandas.pydata.org/) for data manipulation and cleaning.
+  
+## 3. **Modeling and Tools Used**
+  - **CatBoost**: The machine learning model used in this project is [CatBoost](https://catboost.ai/), a gradient boosting library by Yandex, which is particularly effective with categorical features. The version used in this project is `catboost==1.2`.
+  - **Matplotlib** and **Seaborn** for plotting and data visualization:
+    - [Matplotlib](https://matplotlib.org/) for general plotting.
+    - [Seaborn](https://seaborn.pydata.org/) for more advanced statistical visualizations, including distribution and correlation plots.
+
+## 4. **Model Validation and Performance Evaluation**  
+The model was evaluated using common regression metrics such as RMSE, MAE, and R², and the results were visualized using:
+  - [Scikit-learn Metrics](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics) for computing evaluation metrics.
+  - [SHAP](https://github.com/slundberg/shap) for understanding model predictions and feature contributions.
+
+## 5. **External Libraries and Dependencies**  
+For a complete list of dependencies used in this project, see the [requirements.txt](requirements.txt) file, which includes libraries such as Pandas, Numpy, Scikit-learn, Matplotlib, and SHAP.
+
+## 6. **References for Data Processing and Feature Engineering**  
+- [Pandas Documentation](https://pandas.pydata.org/pandas-docs/stable/)
+- [Feature Engineering - Kaggle](https://www.kaggle.com/learn/feature-engineering)
+- [SHAP Documentation](https://shap.readthedocs.io/en/latest/)
+  
+
